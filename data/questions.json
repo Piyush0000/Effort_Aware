@@ -1,0 +1,466 @@
+[
+  {
+    "id": "q1",
+    "title": "Temperature Converter (Celsius to Fahrenheit)",
+    "topic": "Variables and data types",
+    "difficulty": "Beginner",
+    "description": "Write a function or program that accepts a temperature value in Celsius and converts it to Fahrenheit using the formula: F = (C * 9/5) + 32.",
+    "constraints": "-100.0 <= Celsius <= 100.0. Input can be a float or integer.",
+    "example_input": "celsius = 25.0",
+    "example_output": "77.0",
+    "starter_code": {
+      "Python": "def convert_celsius_to_fahrenheit(celsius):\n    # Write your conversion logic here\n    pass\n",
+      "Java": "public class Solution {\n    public static double convertCelsiusToFahrenheit(double celsius) {\n        // Write your conversion logic here\n        return 0.0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def convert_celsius_to_fahrenheit(celsius):\n    fahrenheit = (celsius * 9.0 / 5.0) + 32.0\n    return fahrenheit",
+      "Java": "public class Solution {\n    public static double convertCelsiusToFahrenheit(double celsius) {\n        return (celsius * 9.0 / 5.0) + 32.0;\n    }\n}"
+    },
+    "hints": [
+      "Remember the mathematical formula: F = (C * 9/5) + 32.",
+      "Ensure float division is used (9.0 / 5.0) to preserve decimal accuracy."
+    ],
+    "guided_steps": [
+      "Step 1: Multiply the Celsius input by 9.0.",
+      "Step 2: Divide the result by 5.0.",
+      "Step 3: Add 32.0 to obtain the final Fahrenheit temperature.",
+      "Step 4: Return the calculated value."
+    ],
+    "followup_question": "What happens if you use integer division `9 / 5` instead of `9.0 / 5.0` in Python 2 vs Python 3 or Java?",
+    "followup_options": ["Integer division truncates 9/5 to 1, producing incorrect results", "No difference", "Syntax error", "It rounds to 2"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q2",
+    "title": "Leap Year Checker",
+    "topic": "Conditional statements",
+    "difficulty": "Beginner",
+    "description": "Write a function that determines whether a given year is a leap year. A year is a leap year if it is divisible by 4, except for century years (divisible by 100), which must also be divisible by 400.",
+    "constraints": "1 <= year <= 9999",
+    "example_input": "year = 2000",
+    "example_output": "True",
+    "starter_code": {
+      "Python": "def is_leap_year(year):\n    # Write your boolean conditional logic\n    pass\n",
+      "Java": "public class Solution {\n    public static boolean isLeapYear(int year) {\n        // Write conditional check\n        return false;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def is_leap_year(year):\n    if (year % 400 == 0):\n        return True\n    if (year % 100 == 0):\n        return False\n    return year % 4 == 0",
+      "Java": "public class Solution {\n    public static boolean isLeapYear(int year) {\n        if (year % 400 == 0) return true;\n        if (year % 100 == 0) return false;\n        return year % 4 == 0;\n    }\n}"
+    },
+    "hints": [
+      "Use the modulo operator `%` to check divisibility.",
+      "Check divisibility by 400 first, then 100, then 4."
+    ],
+    "guided_steps": [
+      "Step 1: Check if `year % 400 == 0`. If true, return True.",
+      "Step 2: Else check if `year % 100 == 0`. If true, return False.",
+      "Step 3: Otherwise return `year % 4 == 0`."
+    ],
+    "followup_question": "Why is the year 1900 NOT a leap year while year 2000 IS a leap year?",
+    "followup_options": ["1900 is divisible by 100 but not 400; 2000 is divisible by 400", "1900 is an odd century", "2000 is a leap century rule exception", "Both are leap years"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q3",
+    "title": "Sum of First N Natural Numbers",
+    "topic": "Loops",
+    "difficulty": "Beginner",
+    "description": "Write a program that takes an integer N and calculates the sum of all integers from 1 to N using an iterative loop.",
+    "constraints": "1 <= N <= 10000",
+    "example_input": "N = 5",
+    "example_output": "15",
+    "starter_code": {
+      "Python": "def sum_n(n):\n    # Accumulate sum using loop\n    pass\n",
+      "Java": "public class Solution {\n    public static int sumN(int n) {\n        // Accumulate sum using loop\n        return 0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def sum_n(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total",
+      "Java": "public class Solution {\n    public static int sumN(int n) {\n        int total = 0;\n        for (int i = 1; i <= n; i++) {\n            total += i;\n        }\n        return total;\n    }\n}"
+    },
+    "hints": [
+      "Initialize an accumulator variable `total = 0` before the loop.",
+      "Iterate from 1 up to N (inclusive) and add each number to `total`."
+    ],
+    "guided_steps": [
+      "Step 1: Initialize `total = 0`.",
+      "Step 2: Use a `for` loop `for i in range(1, n + 1)`.",
+      "Step 3: In each iteration, perform `total = total + i`.",
+      "Step 4: Return `total` after loop completes."
+    ],
+    "followup_question": "What is the closed-form mathematical formula (Gauss formula) to calculate this sum in O(1) time?",
+    "followup_options": ["N * (N + 1) / 2", "N * N / 2", "N * (N - 1) / 2", "(N + 1)^2 / 2"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q4",
+    "title": "Prime Number Primality Test",
+    "topic": "Prime number checking",
+    "difficulty": "Intermediate",
+    "description": "Write a function that checks if a given integer n > 1 is a prime number (divisible only by 1 and itself). Optimize your loop up to sqrt(n).",
+    "constraints": "1 <= n <= 10^7",
+    "example_input": "n = 29",
+    "example_output": "True",
+    "starter_code": {
+      "Python": "def is_prime(n):\n    # Check primality\n    pass\n",
+      "Java": "public class Solution {\n    public static boolean isPrime(int n) {\n        // Check primality\n        return false;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True",
+      "Java": "public class Solution {\n    public static boolean isPrime(int n) {\n        if (n <= 1) return false;\n        if (n <= 3) return true;\n        if (n % 2 == 0 || n % 3 == 0) return false;\n        for (int i = 5; i * i <= n; i += 6) {\n            if (n % i == 0 || n % (i + 2) == 0) return false;\n        }\n        return true;\n    }\n}"
+    },
+    "hints": [
+      "Numbers <= 1 are not prime.",
+      "You only need to check potential divisors up to the square root of n."
+    ],
+    "guided_steps": [
+      "Step 1: Return False for n <= 1.",
+      "Step 2: Check divisibility by 2 and 3.",
+      "Step 3: Loop from i = 5 while i * i <= n, checking `n % i == 0` or `n % (i + 2) == 0`.",
+      "Step 4: Increment i by 6 each iteration."
+    ],
+    "followup_question": "Why is it sufficient to check divisors only up to sqrt(n)?",
+    "followup_options": ["If n = a * b, one factor must be <= sqrt(n) and the other >= sqrt(n)", "Because all numbers past sqrt(n) are prime", "It is an empirical rule with exceptions", "Because sqrt(n) is the midpoint"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q5",
+    "title": "String Palindrome Verification",
+    "topic": "Palindrome checking",
+    "difficulty": "Intermediate",
+    "description": "Write a function that checks if a string is a palindrome, ignoring non-alphanumeric characters and case sensitivity.",
+    "constraints": "0 <= string length <= 10^5",
+    "example_input": "s = 'A man, a plan, a canal: Panama'",
+    "example_output": "True",
+    "starter_code": {
+      "Python": "def is_palindrome(s):\n    # Filter and check palindrome\n    pass\n",
+      "Java": "public class Solution {\n    public static boolean isPalindrome(String s) {\n        // Filter and check palindrome\n        return false;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def is_palindrome(s):\n    filtered = [ch.lower() for ch in s if ch.isalnum()]\n    return filtered == filtered[::-1]",
+      "Java": "public class Solution {\n    public static boolean isPalindrome(String s) {\n        StringBuilder sb = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            if (Character.isLetterOrDigit(c)) {\n                sb.append(Character.toLowerCase(c));\n            }\n        }\n        String filtered = sb.toString();\n        String reversed = sb.reverse().toString();\n        return filtered.equals(reversed);\n    }\n}"
+    },
+    "hints": [
+      "Filter the string to keep only alphanumeric characters and convert to lowercase.",
+      "Compare the filtered string with its reverse, or use two pointers from start and end."
+    ],
+    "guided_steps": [
+      "Step 1: Iterate over string characters and clean non-alphanumeric characters.",
+      "Step 2: Convert all characters to lower case.",
+      "Step 3: Compare character at index `left` and index `right` moving towards center.",
+      "Step 4: If all match, return True."
+    ],
+    "followup_question": "How does the two-pointer technique achieve O(1) extra space compared to creating a reversed string copy?",
+    "followup_options": ["By checking characters in-place without allocating new string memory", "It uses recursion", "By using a hash table", "It does not save space"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q6",
+    "title": "Find Maximum Element in Array",
+    "topic": "Arrays",
+    "difficulty": "Beginner",
+    "description": "Given an array of integers, write a function to find and return the maximum value in the array without using built-in max functions.",
+    "constraints": "1 <= array length <= 10^5",
+    "example_input": "arr = [3, 7, 2, 9, 5]",
+    "example_output": "9",
+    "starter_code": {
+      "Python": "def find_max(arr):\n    # Find maximum element\n    pass\n",
+      "Java": "public class Solution {\n    public static int findMax(int[] arr) {\n        // Find maximum element\n        return 0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def find_max(arr):\n    if not arr:\n        return None\n    max_val = arr[0]\n    for num in arr[1:]:\n        if num > max_val:\n            max_val = num\n    return max_val",
+      "Java": "public class Solution {\n    public static int findMax(int[] arr) {\n        if (arr.length == 0) throw new IllegalArgumentException(\"Array is empty\");\n        int maxVal = arr[0];\n        for (int i = 1; i < arr.length; i++) {\n            if (arr[i] > maxVal) maxVal = arr[i];\n        }\n        return maxVal;\n    }\n}"
+    },
+    "hints": [
+      "Initialize a `max_val` variable with the first element `arr[0]`.",
+      "Loop through the remaining elements and update `max_val` whenever a larger element is found."
+    ],
+    "guided_steps": [
+      "Step 1: Check if array is empty.",
+      "Step 2: Set `max_val = arr[0]`.",
+      "Step 3: Loop `for x in arr`.",
+      "Step 4: If `x > max_val`, set `max_val = x`.",
+      "Step 5: Return `max_val`."
+    ],
+    "followup_question": "What is the time complexity of finding the maximum element in an unsorted array of size N?",
+    "followup_options": ["O(N)", "O(log N)", "O(N^2)", "O(1)"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q7",
+    "title": "In-Place Array Reversal",
+    "topic": "Arrays",
+    "difficulty": "Intermediate",
+    "description": "Reverse an array of integers in-place without creating a secondary copy of the array.",
+    "constraints": "1 <= array length <= 10^5",
+    "example_input": "arr = [1, 2, 3, 4, 5]",
+    "example_output": "[5, 4, 3, 2, 1]",
+    "starter_code": {
+      "Python": "def reverse_array(arr):\n    # Reverse array in-place\n    pass\n",
+      "Java": "public class Solution {\n    public static void reverseArray(int[] arr) {\n        // Reverse array in-place\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def reverse_array(arr):\n    left, right = 0, len(arr) - 1\n    while left < right:\n        arr[left], arr[right] = arr[right], arr[left]\n        left += 1\n        right -= 1\n    return arr",
+      "Java": "public class Solution {\n    public static void reverseArray(int[] arr) {\n        int left = 0, right = arr.length - 1;\n        while (left < right) {\n            int temp = arr[left];\n            arr[left] = arr[right];\n            arr[right] = temp;\n            left++;\n            right--;\n        }\n    }\n}"
+    },
+    "hints": [
+      "Use two pointers: `left` at index 0 and `right` at index `len(arr) - 1`.",
+      "Swap elements at `left` and `right` until pointers cross (`left >= right`)."
+    ],
+    "guided_steps": [
+      "Step 1: Set `left = 0` and `right = length - 1`.",
+      "Step 2: Loop while `left < right`.",
+      "Step 3: Swap `arr[left]` and `arr[right]`.",
+      "Step 4: Increment `left`, decrement `right`."
+    ],
+    "followup_question": "Why is in-place swap preferred over returning a new reversed array when memory budget is constrained?",
+    "followup_options": ["It operates in O(1) auxiliary space", "It runs in O(log N) time", "It eliminates CPU cache misses", "It avoids array index lookups"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q8",
+    "title": "Vowel Counter in String",
+    "topic": "Strings",
+    "difficulty": "Beginner",
+    "description": "Write a function that counts the total number of vowels ('a', 'e', 'i', 'o', 'u', both lower and uppercase) in a given string.",
+    "constraints": "0 <= string length <= 10^4",
+    "example_input": "s = 'Hello World'",
+    "example_output": "3",
+    "starter_code": {
+      "Python": "def count_vowels(s):\n    # Count vowels in s\n    pass\n",
+      "Java": "public class Solution {\n    public static int countVowels(String s) {\n        // Count vowels in s\n        return 0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def count_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return sum(1 for char in s if char in vowels)",
+      "Java": "public class Solution {\n    public static int countVowels(String s) {\n        int count = 0;\n        String vowels = \"aeiouAEIOU\";\n        for (char c : s.toCharArray()) {\n            if (vowels.indexOf(c) != -1) count++;\n        }\n        return count;\n    }\n}"
+    },
+    "hints": [
+      "Define a set or string containing all vowel characters (both upper and lower case).",
+      "Iterate over each character in the string and increment a counter if it exists in your vowel set."
+    ],
+    "guided_steps": [
+      "Step 1: Set `count = 0`.",
+      "Step 2: Define set of vowels: {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}.",
+      "Step 3: For each character in input string, check if character is in set.",
+      "Step 4: Return count."
+    ],
+    "followup_question": "Why is checking membership in a `set` faster than checking membership in a `list` in Python?",
+    "followup_options": ["Set lookups are O(1) average time complexity via hash table", "Sets store elements in sorted order", "Lists use binary search", "Sets consume less memory"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q9",
+    "title": "Valid Anagram Detector",
+    "topic": "Strings",
+    "difficulty": "Intermediate",
+    "description": "Given two strings s and t, return True if t is an anagram of s (contains same characters with exact same frequencies), and False otherwise.",
+    "constraints": "1 <= s.length, t.length <= 5 * 10^4",
+    "example_input": "s = 'listen', t = 'silent'",
+    "example_output": "True",
+    "starter_code": {
+      "Python": "def is_anagram(s, t):\n    # Check if t is an anagram of s\n    pass\n",
+      "Java": "public class Solution {\n    public static boolean isAnagram(String s, String t) {\n        // Check if t is an anagram of s\n        return false;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def is_anagram(s, t):\n    if len(s) != len(t):\n        return False\n    counts = {}\n    for char in s:\n        counts[char] = counts.get(char, 0) + 1\n    for char in t:\n        if char not in counts or counts[char] == 0:\n            return False\n        counts[char] -= 1\n    return True",
+      "Java": "public class Solution {\n    public static boolean isAnagram(String s, String t) {\n        if (s.length() != t.length()) return false;\n        int[] counts = new int[26];\n        for (int i = 0; i < s.length(); i++) {\n            counts[s.charAt(i) - 'a']++;\n            counts[t.charAt(i) - 'a']--;\n        }\n        for (int count : counts) {\n            if (count != 0) return false;\n        }\n        return true;\n    }\n}"
+    },
+    "hints": [
+      "First compare string lengths. If lengths differ, return False.",
+      "Use a frequency map (dictionary or array of size 26) to count character occurrences."
+    ],
+    "guided_steps": [
+      "Step 1: Check length equality.",
+      "Step 2: Build frequency dictionary for first string.",
+      "Step 3: Decrement frequencies using second string.",
+      "Step 4: Check if all frequencies equal 0."
+    ],
+    "followup_question": "What is the advantage of character frequency hashing (O(N) time) over sorting both strings (O(N log N) time)?",
+    "followup_options": ["Linear time complexity O(N)", "Uses O(N^2) space", "Works only for integers", "Sorting is always faster"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q10",
+    "title": "Binary Search in Sorted Array",
+    "topic": "Searching",
+    "difficulty": "Intermediate",
+    "description": "Implement binary search on a sorted array of integers. Return the index of target if found, or -1 if target is not present.",
+    "constraints": "1 <= arr.length <= 10^5, arr is sorted in ascending order.",
+    "example_input": "arr = [1, 3, 5, 7, 9, 11], target = 7",
+    "example_output": "3",
+    "starter_code": {
+      "Python": "def binary_search(arr, target):\n    # Implement binary search\n    pass\n",
+      "Java": "public class Solution {\n    public static int binarySearch(int[] arr, int target) {\n        // Implement binary search\n        return -1;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+      "Java": "public class Solution {\n    public static int binarySearch(int[] arr, int target) {\n        int left = 0, right = arr.length - 1;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            if (arr[mid] == target) return mid;\n            if (arr[mid] < target) left = mid + 1;\n            else right = mid - 1;\n        }\n        return -1;\n    }\n}"
+    },
+    "hints": [
+      "Maintain search interval bounds `left` and `right`.",
+      "Calculate `mid = left + (right - left) // 2` to prevent potential integer overflow."
+    ],
+    "guided_steps": [
+      "Step 1: Set `left = 0`, `right = len(arr) - 1`.",
+      "Step 2: Loop while `left <= right`.",
+      "Step 3: Calculate middle index `mid`.",
+      "Step 4: Adjust `left` or `right` depending on whether `arr[mid]` is less than or greater than `target`."
+    ],
+    "followup_question": "Why is `mid = left + (right - left) // 2` safer than `mid = (left + right) // 2` in fixed-width integer languages like Java or C++?",
+    "followup_options": ["Prevents integer overflow when (left + right) exceeds maximum integer bound", "It calculates faster", "It avoids floating point values", "No difference"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q11",
+    "title": "Bubble Sort Algorithm",
+    "topic": "Sorting",
+    "difficulty": "Intermediate",
+    "description": "Implement the Bubble Sort algorithm to sort an array of integers in ascending order. Add an optimized boolean flag to terminate early if no swaps occur in a pass.",
+    "constraints": "1 <= arr.length <= 1000",
+    "example_input": "arr = [64, 34, 25, 12, 22, 11, 90]",
+    "example_output": "[11, 12, 22, 25, 34, 64, 90]",
+    "starter_code": {
+      "Python": "def bubble_sort(arr):\n    # Implement bubble sort\n    pass\n",
+      "Java": "public class Solution {\n    public static void bubbleSort(int[] arr) {\n        // Implement bubble sort\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr",
+      "Java": "public class Solution {\n    public static void bubbleSort(int[] arr) {\n        int n = arr.length;\n        for (int i = 0; i < n; i++) {\n            boolean swapped = false;\n            for (int j = 0; j < n - i - 1; j++) {\n                if (arr[j] > arr[j + 1]) {\n                    int temp = arr[j];\n                    arr[j] = arr[j + 1];\n                    arr[j + 1] = temp;\n                    swapped = true;\n                }\n            }\n            if (!swapped) break;\n        }\n    }\n}"
+    },
+    "hints": [
+      "Compare adjacent pairs `arr[j]` and `arr[j+1]` in an inner loop.",
+      "Use a `swapped` boolean variable to break early if the array is already sorted."
+    ],
+    "guided_steps": [
+      "Step 1: Outer loop `for i from 0 to n-1`.",
+      "Step 2: Inner loop `for j from 0 to n-i-2`.",
+      "Step 3: If `arr[j] > arr[j+1]`, swap them.",
+      "Step 4: If no swaps were performed in inner loop, break."
+    ],
+    "followup_question": "What is the worst-case and best-case time complexity of optimized Bubble Sort?",
+    "followup_options": ["Worst-case O(N^2), Best-case O(N)", "Worst-case O(N log N), Best-case O(1)", "O(N^2) for both", "O(N) for both"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q12",
+    "title": "Factorial Calculation",
+    "topic": "Functions",
+    "difficulty": "Beginner",
+    "description": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n (n! = n * (n-1) * ... * 1). Note that 0! = 1.",
+    "constraints": "0 <= n <= 20",
+    "example_input": "n = 5",
+    "example_output": "120",
+    "starter_code": {
+      "Python": "def factorial(n):\n    # Calculate n!\n    pass\n",
+      "Java": "public class Solution {\n    public static long factorial(int n) {\n        // Calculate n!\n        return 1;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def factorial(n):\n    if n < 0:\n        raise ValueError('Negative input not allowed')\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result",
+      "Java": "public class Solution {\n    public static long factorial(int n) {\n        if (n < 0) throw new IllegalArgumentException(\"Negative input\");\n        long result = 1;\n        for (int i = 2; i <= n; i++) {\n            result *= i;\n        }\n        return result;\n    }\n}"
+    },
+    "hints": [
+      "Check base boundary: 0! = 1.",
+      "Multiply numbers from 1 to n iteratively."
+    ],
+    "guided_steps": [
+      "Step 1: Handle base cases n == 0 or n == 1.",
+      "Step 2: Initialize result = 1.",
+      "Step 3: Loop `for i in range(2, n + 1)` and multiply `result *= i`.",
+      "Step 4: Return result."
+    ],
+    "followup_question": "Why can factorial values overflow standard 64-bit integer variables for n > 20 in languages like Java or C++?",
+    "followup_options": ["Factorial grows super-exponentially exceeding 2^63 - 1 limit", "Due to floating point truncation", "Because 20 is the maximum loop limit", "Recursion stack limit"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q13",
+    "title": "Recursive Fibonacci Sequence",
+    "topic": "Basic recursion",
+    "difficulty": "Intermediate",
+    "description": "Write a recursive function `fibonacci(n)` that returns the n-th Fibonacci number, where fib(0) = 0 and fib(1) = 1.",
+    "constraints": "0 <= n <= 30",
+    "example_input": "n = 6",
+    "example_output": "8",
+    "starter_code": {
+      "Python": "def fibonacci(n):\n    # Base cases and recursive calls\n    pass\n",
+      "Java": "public class Solution {\n    public static int fibonacci(int n) {\n        // Base cases and recursive calls\n        return 0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def fibonacci(n):\n    if n <= 0:\n        return 0\n    if n == 1:\n        return 1\n    return fibonacci(n - 1) + fibonacci(n - 2)",
+      "Java": "public class Solution {\n    public static int fibonacci(int n) {\n        if (n <= 0) return 0;\n        if (n == 1) return 1;\n        return fibonacci(n - 1) + fibonacci(n - 2);\n    }\n}"
+    },
+    "hints": [
+      "Identify the base cases: n == 0 -> 0, n == 1 -> 1.",
+      "The recursive step is `fib(n-1) + fib(n-2)`."
+    ],
+    "guided_steps": [
+      "Step 1: Check `if n <= 0 return 0`.",
+      "Step 2: Check `if n == 1 return 1`.",
+      "Step 3: Return `fibonacci(n-1) + fibonacci(n-2)`."
+    ],
+    "followup_question": "What is the time complexity of naive recursive Fibonacci without memoization, and why?",
+    "followup_options": ["O(2^N) due to redundant recalculation of subproblems in binary recursion tree", "O(N) linear time", "O(N log N)", "O(N^2)"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q14",
+    "title": "Recursive Sum of Digits",
+    "topic": "Basic recursion",
+    "difficulty": "Advanced",
+    "description": "Write a recursive function `sum_of_digits(n)` that computes the sum of the digits of a non-negative integer n. For example, sum_of_digits(126) = 1 + 2 + 6 = 9.",
+    "constraints": "0 <= n <= 10^9",
+    "example_input": "n = 126",
+    "example_output": "9",
+    "starter_code": {
+      "Python": "def sum_of_digits(n):\n    # Base case and recursive digit extraction\n    pass\n",
+      "Java": "public class Solution {\n    public static int sumOfDigits(int n) {\n        // Base case and recursive digit extraction\n        return 0;\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def sum_of_digits(n):\n    if n < 10:\n        return n\n    return (n % 10) + sum_of_digits(n // 10)",
+      "Java": "public class Solution {\n    public static int sumOfDigits(int n) {\n        if (n < 10) return n;\n        return (n % 10) + sumOfDigits(n / 10);\n    }\n}"
+    },
+    "hints": [
+      "The last digit of n is obtained by `n % 10`.",
+      "The remaining digits are obtained by integer division `n // 10`."
+    ],
+    "guided_steps": [
+      "Step 1: Base case: if n < 10, return n.",
+      "Step 2: Extract last digit: `last = n % 10`.",
+      "Step 3: Make recursive call with `n // 10`.",
+      "Step 4: Return `last + sum_of_digits(n // 10)`."
+    ],
+    "followup_question": "How many recursive calls are made for an integer with d digits?",
+    "followup_options": ["d calls (equal to number of digits)", "10^d calls", "2^d calls", "d/2 calls"],
+    "followup_correct_index": 0
+  },
+  {
+    "id": "q15",
+    "title": "Matrix Multiplication & Complexity Analysis",
+    "topic": "Time complexity",
+    "difficulty": "Advanced",
+    "description": "Implement matrix multiplication for two square N x N matrices and identify its time and space complexity.",
+    "constraints": "1 <= N <= 200",
+    "example_input": "A = [[1, 2], [3, 4]], B = [[5, 6], [7, 8]]",
+    "example_output": "[[19, 22], [43, 50]]",
+    "starter_code": {
+      "Python": "def multiply_matrices(A, B):\n    # Multiply two square matrices N x N\n    pass\n",
+      "Java": "public class Solution {\n    public static int[][] multiplyMatrices(int[][] A, int[][] B) {\n        // Multiply two square matrices N x N\n        return new int[0][0];\n    }\n}"
+    },
+    "reference_solution": {
+      "Python": "def multiply_matrices(A, B):\n    n = len(A)\n    C = [[0] * n for _ in range(n)]\n    for i in range(n):\n        for j in range(n):\n            for k in range(n):\n                C[i][j] += A[i][k] * B[k][j]\n    return C",
+      "Java": "public class Solution {\n    public static int[][] multiplyMatrices(int[][] A, int[][] B) {\n        int n = A.length;\n        int[][] C = new int[n][n];\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                for (int k = 0; k < n; k++) {\n                    C[i][j] += A[i][k] * B[k][j];\n                }\n            }\n        }\n        return C;\n    }\n}"
+    },
+    "hints": [
+      "Use three nested loops: loop i over rows of A, loop j over columns of B, and loop k for dot product calculation.",
+      "Initialize result matrix C of size N x N with zeros."
+    ],
+    "guided_steps": [
+      "Step 1: Determine dimension N = len(A).",
+      "Step 2: Create N x N result matrix initialized to 0.",
+      "Step 3: Outer loop i from 0 to N-1, middle loop j from 0 to N-1, inner loop k from 0 to N-1.",
+      "Step 4: Compute `C[i][j] += A[i][k] * B[k][j]`."
+    ],
+    "followup_question": "What is the time complexity of naive matrix multiplication with 3 nested loops for N x N matrices?",
+    "followup_options": ["O(N^3)", "O(N^2)", "O(N log N)", "O(2^N)"],
+    "followup_correct_index": 0
+  }
+]

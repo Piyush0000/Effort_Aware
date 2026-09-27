@@ -1,0 +1,33 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables & keys
+.env
+*.env
+
+# SQLite Databases
+*.db
+*.sqlite
+*.sqlite3
+tutor_data.db
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Antigravity & IDE settings
+.gemini/
+.vscode/
+.idea/
+
+# OS Files
+Thumbs.db
+Desktop.ini
+.DS_Store
