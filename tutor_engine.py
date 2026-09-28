@@ -7,12 +7,13 @@ Supports:
 """
 
 import os
+import time
 import logging
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Optional
 from question_bank import Question
 from effort_engine import EffortResult
-from config import DEFAULT_GEMINI_MODEL
+from config import DEFAULT_GEMINI_MODEL, FALLBACK_GEMINI_MODELS
 
 logger = logging.getLogger(__name__)
 
@@ -163,6 +164,26 @@ class GeminiTutorProvider(BaseTutorProvider):
             except Exception as e:
                 logger.warning(f"Failed to initialize Gemini Client: {e}")
 
+    def _generate(self, prompt: str):
+        """Calls Gemini, retrying transient errors (overload / rate limit) and trying backup models."""
+        models = [self.model_name] + [m for m in FALLBACK_GEMINI_MODELS if m != self.model_name]
+        last_error = None
+        for model in models:
+            for attempt in range(2):
+                try:
+                    response = self.client.models.generate_content(model=model, contents=prompt)
+                    if response and response.text:
+                        return response.text, model
+                    raise ValueError("Empty response returned from Gemini API.")
+                except Exception as e:
+                    last_error = e
+                    msg = str(e)
+                    if not any(code in msg for code in ("503", "429", "500", "UNAVAILABLE", "RESOURCE_EXHAUSTED")):
+                        break  # not transient: move on to the next model
+                    logger.warning(f"Gemini {model} attempt {attempt + 1} failed: {e}")
+                    time.sleep(1.5 * (attempt + 1))
+        raise last_error
+
     def generate_assistance(
         self,
         question: Question,
@@ -227,22 +248,15 @@ Important Constraints:
 """
 
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt
-            )
-            
-            if response and response.text:
-                return {
-                    "success": True,
-                    "provider": f"Google Gemini ({self.model_name})",
-                    "content": response.text,
-                    "level": level,
-                    "is_offline": False,
-                    "error_message": None
-                }
-            else:
-                raise ValueError("Empty response returned from Gemini API.")
+            text, model_used = self._generate(prompt)
+            return {
+                "success": True,
+                "provider": f"Google Gemini ({model_used})",
+                "content": text,
+                "level": level,
+                "is_offline": False,
+                "error_message": None
+            }
 
         except Exception as e:
             logger.error(f"Gemini API invocation error: {e}")
@@ -283,20 +297,13 @@ Guidelines:
 """
 
         try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt
-            )
-
-            if response and response.text:
-                return {
-                    "success": True,
-                    "provider": f"Google Gemini Copilot ({self.model_name})",
-                    "content": response.text,
-                    "is_offline": False
-                }
-            else:
-                raise ValueError("Empty response from Gemini Copilot API.")
+            text, model_used = self._generate(prompt)
+            return {
+                "success": True,
+                "provider": f"Google Gemini Copilot ({model_used})",
+                "content": text,
+                "is_offline": False
+            }
         except Exception as e:
             logger.error(f"Gemini Copilot API error: {e}")
             return offline_fallback.ask_copilot(user_prompt, code_context, language, chat_history)

@@ -40,3 +40,5 @@ SUPPORTED_LANGUAGES = ["Python", "Java"]
 
 # Gemini AI Settings
 DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+# Tried in order if the default model is overloaded or unavailable
+FALLBACK_GEMINI_MODELS = ["gemini-3.7-flash", "gemini-3.5-flash-lite"]
