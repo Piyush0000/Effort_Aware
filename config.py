@@ -39,4 +39,4 @@ ASSISTANCE_LEVELS = {
 SUPPORTED_LANGUAGES = ["Python", "Java"]
 
 # Gemini AI Settings
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
